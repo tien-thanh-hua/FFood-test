@@ -2,6 +2,7 @@ package Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class StaticCodeAnalysisDemo {
 
@@ -85,6 +86,30 @@ public class StaticCodeAnalysisDemo {
       } else {
         System.out.println("x is non-positive, but flag3 is false");
       }
+    }
+  }
+
+  // Warning: Data flow anomaly
+  public void dataflowanomaly(int x) {
+    int y = 0;
+    Scanner sc = new Scanner(System.in);
+    x = sc.nextInt();
+    y = 1;
+    if (z > 0) { // z is not initialized
+      int z = sc.nextInt();
+    }
+    if (x > 0) {
+      y = 2;
+    }
+    System.out.println(y);
+  }
+
+  // Error: Unnecessary jump statement
+  public void unnecessaryJumpStatement(int x) {
+    if (x > 0) {
+      return;
+    } else {
+      System.out.println("x is non-positive");
     }
   }
 
