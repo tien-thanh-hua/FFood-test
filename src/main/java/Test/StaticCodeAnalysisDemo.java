@@ -56,6 +56,7 @@ public class StaticCodeAnalysisDemo {
   public void infiniteLoop() {
     while (true) {
       // Infinite loop
+      System.out.println("I'm running");
     }
   }
 
